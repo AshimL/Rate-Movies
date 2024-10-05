@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rating</title>
+  <link rel="stylesheet" href="styles/shared/navbar.css">
+  <link rel="stylesheet" href="styles/pages/rating.css">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+<body>
+
+  <nav>
+    <div class="nav_header">
+      <div class="nav_logo">
+        <a href="#">Rate <span>Movies</span></a>
+      </div>
+
+      <div class="nav_menu_btn" id="menu-btn">
+        <span><i class="ri-menu-line"></i></span>
+      </div>
+    </div>
+  
+    <ul class="nav_links" id="nav-links">
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">Tv Shows</a></li>
+      <li><a href="#">People</a></li>
+      <li><a href="#">More</a></li>
+    </ul>
+
+    <div class="feat_btns">
+      <a href="ratings.html" class="rating">Rating</a>
+      <a href="watchlater.html" class="watchlater">Watch Later</a>
+    </div>
+  </nav>
+
+
+  <div class="ratings-page">
+    <div class="ratings-header">
+      <h1>Your Ratings</h1>
+      <p>This page compiles a list of titles you have rated, providing a convenient overview of all your ratings.</p>
+    </div>
+  
+    <div class="ratings-content">
+      <div class="rated-item">
+          <div class="poster">
+              <img src="images/movies/Interstellar.jpg" alt="Interstellar Poster">
+          </div>
+          <div class="details">
+              <p class="rated-on">Rated on Oct 30, 2024</p>
+              <h2 class="movie-title">Interstellar</h2>
+              <p class="year-runtime">2008 • 2h 32m</p>
+              <div class="rating-section">
+                  <span>Rating: 0 <i class="fa-solid fa-star"></i></span>
+                  <span class="rate-button">Rate</span>
+                  <span class="delete-button">Delete</span>
+              </div>
+              <p class="overview-title">Overview</p>
+              <p class="overview">
+                  When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft, along with a team of researchers, to find a new planet for humans.
+              </p>
+              <div class="movie-crew">
+                <div class="credit">
+                  <span class="label">Director:</span> Christopher Nolan
+                </div>
+                <div class="credit">
+                  <span class="label">Writer:</span> Kai Bird
+                </div>
+                <div class="credit">
+                  <span class="label">Actor:</span> Matthew McConaughey
+                </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="rated-item">
+          <div class="poster">
+              <img src="images/movies/Oppenheimer.jpg" alt="Oppenheimer Poster">
+          </div>
+          <div class="details">
+              <p class="rated-on">Rated on Oct 30, 2024</p>
+              <h2 class="movie-title">Oppenheimer</h2>
+              <p class="year-runtime">2023 • 3h</p>
+              <div class="rating-section">
+                  <span>Rating: 0 <i class="fa-solid fa-star"></i></span>
+                  <span class="rate-button">Rate</span>
+                  <span class="delete-button">Delete</span>
+              </div>
+              <p class="overview-title">Overview:</p>
+              <p class="overview">
+                  The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.
+              </p>
+              <div class="movie-crew">
+                <div class="credit">
+                  <span class="label">Director:</span> Christopher Nolan
+                </div>
+                <div class="credit">
+                  <span class="label">Writer:</span> Kai Bird
+                </div>
+                <div class="credit">
+                  <span class="label">Actor:</span> Cillian Murphy
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  </div>
+
+
+  <script src="scripts/general.js"></script>
+  
+
+  
+</body>
+</html>

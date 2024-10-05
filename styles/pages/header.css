@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+
+/* HEADER */
+.header {
+  padding-block: 8rem 2rem;
+  padding-inline: 2rem;
+}
+
+.hero_content{
+  display: flex; 
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  text-align: center;
+}
+
+.hero_text{
+  order: 2;
+  max-width: 60%;
+}
+.hero_text span{
+  color: var(--primary-color);
+}
+
+
+
+.hero_text h1{
+  font-size: 2rem; 
+  font-weight: 600;  
+  color: var(--text-dark); 
+  text-transform: uppercase; 
+  margin-bottom: 1rem; 
+  
+}
+
+.hero_text p {
+  font-size: 1rem; 
+  color: var(--text-light); 
+  line-height: 1.6; 
+  margin-bottom: 1.5rem; 
+}
+
+
+.action_button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--secondary-color);
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.action_button:hover {
+  background-color: var(--primary-color);
+  transform: translateY(-3px); 
+}
+
+
+
+
+.hero_image {
+  order: 1;
+  max-width: 100%;
+  width: 100%; 
+  display: flex;
+  justify-content: center; 
+  overflow: hidden;
+}
+
+.hero_image img {
+  max-width: 60%; 
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; 
+  object-fit: cover; 
+}
+
+
+
+
+
+
+
+/* For Larger Screens */
+@media (min-width: 768px) {
+
+  .header {
+    padding-block: 3rem 0;
+    padding-inline: 1rem;
+    max-width: var(--max-width);
+    margin-inline: auto;
+  }
+
+  .hero_content {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between; 
+    text-align: left; 
+  }
+
+  .hero_text h1{
+  font-size: 2.5rem; 
+}
+
+.hero_text p {
+  font-size: 1.2rem; 
+ 
+}
+
+  .hero_text {
+    order: 1;
+    flex: 1; 
+    max-width: 50%; 
+    margin-right: 20px; 
+
+  }
+
+  .hero_image {
+    order: 2; 
+    flex: 1; 
+    max-width: 100%; 
+    height: 100%;
+  }
+
+  .hero_image img {
+    max-width: 100%; 
+    height: 100%;
+    max-height: 650px;
+    object-fit: cover; 
+   
+  }
+
+}
+
