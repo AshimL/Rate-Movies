@@ -61,9 +61,12 @@
   font-weight: 600;
   margin: 1rem 0;
   color: var(--text-dark);
+  
 }
 
+
 .details-button {
+  background-color: transparent;
   text-decoration: none;
   color: var(--primary-color);
   border: 1px solid var(--primary-color);
@@ -71,6 +74,8 @@
   border-radius: 5px;
   transition: background-color 0.3s, color 0.3s;
   font-size: 0.9rem;
+  cursor: pointer; 
+  outline: none; 
 }
 
 .details-button:hover {
@@ -78,6 +83,9 @@
   color: var(--white);
 }
 
+.details-button:focus {
+  outline: 2px solid var(--primary-color-dark); 
+}
 
 
 
