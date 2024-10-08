@@ -10,7 +10,7 @@ export function getMatchingMovie(clickedMovieId){
   }
   })
 
-  return matchingMovie
+  return matchingMovie;
 
 }
   

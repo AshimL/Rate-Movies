@@ -9,7 +9,7 @@ movielist.forEach((movie) =>{
   <div class="movie-card">
         <img src="${movie.image}" class="movie-poster">
         <h3 class="movie-name">${movie.name}</h3>
-       <button class="details-button" data-product-id="${movie.id}">See Details</button>
+       <button class="details-button" data-movie-id="${movie.id}">See Details</button>
       </div>
   
   `
@@ -24,7 +24,7 @@ moviesContent.innerHTML = homepageHTML;
 const detailButtons = document.querySelectorAll('.details-button');
 detailButtons.forEach(button => {
   button.addEventListener('click', () => {
-    const movieId = button.dataset.productId;
+    const movieId = button.dataset.movieId;
 
     localStorage.setItem('selectedMovieId', movieId)
     window.location.assign('details.html');
