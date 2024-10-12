@@ -80,8 +80,38 @@
   margin-bottom: 1rem; 
 }
 
+
+
 .rate-button,.delete-button{
-  color:var(--secondary-color)
+  color:var(--secondary-color);
+  cursor: pointer;
+}
+
+.input{
+  width: 30px;
+  display: none;
+}
+
+.save-link{
+  color:var(--secondary-color);
+  cursor: pointer;
+  display: none;
+}
+
+.is-editing input{
+  display: initial;
+}
+
+.is-editing .rate-button{
+  display: none;
+}
+
+.is-editing .save-link{
+  display: initial;
+}
+
+.is-editing .rating-label {
+  display: none;
 }
 
 .overview-title {

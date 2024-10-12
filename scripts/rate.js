@@ -1,86 +1,126 @@
 import { getMatchingMovie, movielist } from "../data/movies.js";
-import { addToRate, rating } from "../data/rating.js";
+import { addToRate, rating, removeFromRating, saveToStorage } from "../data/rating.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
+import { updateRating } from "../data/rating.js";
 
 
-let ratingId = localStorage.getItem('ratingId');
+function renderRatingPage() {
 
-// if (!rating.some(rated => rated.movieId === ratingId)) {
-//   addToRate(ratingId);
-// }
+  let ratingsHTML = '';
 
-let exists = false;
+  rating.forEach((ratedMovie) => {
+    const ratingId = ratedMovie.movieId;
+    const matchingMovie = getMatchingMovie(ratingId);
 
-for (let i = 0; i < rating.length; i++) {
-  if (ratingId === rating[i].movieId) {
-    exists = true;
-    break;
-  }
-}
+    if (matchingMovie) {
+      const today = dayjs();
+      const dateString = today.format('dddd, MMMM D');
 
-if (!exists) {
-  addToRate(ratingId)
-}
-
-// Save it to github
-
-
-
-
-
-let ratingsHTML = '';
-
-rating.forEach((rating) => {
-  const ratingId = rating.movieId;
-  const matchingMovie = getMatchingMovie(ratingId);
-
-  if (matchingMovie) {
-
-    const today = dayjs();
-    const dateString = today.format('dddd, MMMM D');
-
-
-    ratingsHTML += `
-          <div class="rated-item">
+      ratingsHTML += `
+          <div class="rated-item js-rated-item-${matchingMovie.id}">
             <div class="poster">
-                <img src="${matchingMovie.image}" alt="Interstellar Poster">
+                <img src="${matchingMovie.image}" alt="${matchingMovie.name} Poster">
             </div>
             <div class="details">
                 <p class="rated-on">Rated on ${dateString}</p>
                 <h2 class="movie-title">${matchingMovie.name}</h2>
                 <p class="year-runtime">(${matchingMovie.releaseDate}) • ${matchingMovie.length}</p>
                 <div class="rating-section">
-                    <span>Rating: 0 <i class="fa-solid fa-star"></i></span>
-                    <span class="rate-button">Rate</span>
-                    <span class="delete-button">Delete</span>
+                    <span>
+                        Rating: <span class="rating-label" data-movie-id="${matchingMovie.id}">${ratedMovie.rating}</span>
+                    </span>
+                    <input class='input js-input-${matchingMovie.id}' value="">
+                    <span class="save-link js-save-link" data-movie-id="${matchingMovie.id}">Save</span>
+                    <span class="rate-button js-rate-button" data-movie-id="${matchingMovie.id}">Rate</span>
+                    <span class="delete-button js-delete-button" data-movie-id="${matchingMovie.id}">Delete</span>
                 </div>
                 <p class="overview-title">Overview</p>
-                <p class="overview">
-                   ${matchingMovie.overview}
-                </p>
+                <p class="overview">${matchingMovie.overview}</p>
                 <div class="movie-crew">
                   <div class="credit">
-                    <span class="label">Director:</span>  ${matchingMovie.director}
+                    <span class="label">Director:</span> ${matchingMovie.director}
                   </div>
                   <div class="credit">
-                    <span class="label">Writer:</span>  ${matchingMovie.writer}
+                    <span class="label">Writer:</span> ${matchingMovie.writer}
                   </div>
                   <div class="credit">
-                    <span class="label">Actor:</span> Matthew  ${matchingMovie.actor}
+                    <span class="label">Actor:</span> ${matchingMovie.actor}
                   </div>
                 </div>
             </div>
         </div>
-      
       `;
+    }
+  });
 
-  }
+  document.querySelector('.js-ratings-content').innerHTML = ratingsHTML;
+
+  addEventListeners();
+}
 
 
-});
+function addEventListeners() {
 
-document.querySelector('.js-ratings-content')
-  .innerHTML = ratingsHTML;
+  document.querySelectorAll('.js-rate-button').forEach((link) => {
+    link.addEventListener('click', () => {
+      const { movieId } = link.dataset;
+      const container = document.querySelector(`.js-rated-item-${movieId}`);
+      container.classList.add('is-editing');
+
+    
+    });
+  });
+
+  document.querySelectorAll('.js-save-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      const { movieId } = link.dataset;
+      let input = document.querySelector(`.js-input-${movieId}`);
+      let newInput = Number(input.value);
+
+
+      if (newInput < 0 || newInput >= 10) {
+        alert('Rating must be at least 0 and less than 10');
+        return;
+      }
+
+      const container = document.querySelector(`.js-rated-item-${movieId}`);
+      container.classList.remove('is-editing');
+
+      const ratingLabel = document.querySelector(`.rating-label[data-movie-id="${movieId}"]`);
+      ratingLabel.innerHTML = newInput;
+
+      updateRating(movieId, newInput);
+    });
+  });
+
+
+  document.querySelectorAll('.js-delete-button')
+  .forEach((link)=>{
+   link.addEventListener('click',  () =>{
+    const {movieId} = link.dataset;
+
+   removeFromRating(movieId)
+
+   renderRatingPage();
+   
+   })
+  })
+
+
+}
+
+
+renderRatingPage();
+
+
+
+
+
+
+
+
+
+
 
 
 

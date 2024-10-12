@@ -1,6 +1,7 @@
 import { movielist } from "../data/movies.js";
 import { getMatchingMovie } from "../data/movies.js";
-import { addToRate } from "../data/rating.js";
+import { addToRate, rating } from "../data/rating.js";
+
 
 
 let clickedMovieId = localStorage.getItem('selectedMovieId')
@@ -52,8 +53,26 @@ let rateButtonClicked = document.querySelector('.js-rate-button');
 
 rateButtonClicked.addEventListener('click', () =>{
 
+  
+// // if (!rating.some(rated => rated.movieId === ratingId)) {
+// //   addToRate(ratingId);
+// // }
+
   const movieId = rateButtonClicked.dataset.movieId;
-  localStorage.setItem('ratingId', movieId)
+
+  let exists = false;
+
+  for (let i = 0; i < rating.length; i++) {
+    if (movieId === rating[i].movieId) {
+      exists = true;
+      break;
+    }
+  }
+
+if (!exists) {
+  addToRate(movieId)
+}
+
 
   window.location.assign('ratings.html')
 })

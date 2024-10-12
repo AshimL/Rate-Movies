@@ -1,10 +1,18 @@
 
-export let rating = JSON.parse(localStorage.getItem('rated')) || [];
+export let rating;
+
+loadFromStorage();
+
+function loadFromStorage(){
+  rating = JSON.parse(localStorage.getItem('rated')) || [];
+
+}
 
 
 
 
-export function addToRate(movieId){
+export function addToRate(movieId) {
+
   rating.push({
     movieId: movieId,
     rating: 0
@@ -14,36 +22,39 @@ export function addToRate(movieId){
 }
 
 
-function saveToStorage(){
+export function saveToStorage() {
   localStorage.setItem('rated', JSON.stringify(rating))
 }
 
 
-//compare
+export function updateRating(movieId, newRating) {
 
-/*
+  let matchingMovie;
 
-export let rating = JSON.parse(localStorage.getItem('rated')) || [];
-
-export function addToRate(movieId) {
-    const existingRatingIndex = rating.findIndex(r => r.movieId === movieId);
-    
-    if (existingRatingIndex > -1) {
-        // Update existing rating
-        rating[existingRatingIndex].rating = 0; // Set the default rating (you can change this as needed)
-    } else {
-        // Add new rating
-        rating.push({
-            movieId: movieId,
-            rating: 0 // Set the default rating (you can change this as needed)
-        });
+  rating.forEach((ratinglist) => {
+    if (movieId === ratinglist.movieId) {
+      matchingMovie = ratinglist;
     }
+  });
 
-    saveToStorage(); // Make sure to save the updated ratings to localStorage
+  if (matchingMovie) {
+    matchingMovie.rating = newRating; 
+    saveToStorage(); 
+  }
+};
+
+
+export function removeFromRating(movieId){
+ const newRating = [];
+
+  rating.forEach((ratinglist) =>{
+    if(ratinglist.movieId !== movieId){
+      newRating.push(ratinglist)
+    }
+  });
+
+  rating = newRating;
+  
+  saveToStorage();
 }
 
-function saveToStorage() {
-    localStorage.setItem('rated', JSON.stringify(rating));
-}
-
-*/
