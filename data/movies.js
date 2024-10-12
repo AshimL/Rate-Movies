@@ -1,5 +1,4 @@
 
-
 export function getMatchingMovie(clickedMovieId){
 
   let matchingMovie;

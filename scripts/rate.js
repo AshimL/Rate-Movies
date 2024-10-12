@@ -8,26 +8,25 @@ function renderRatingPage() {
 
   let ratingsHTML = '';
 
-  rating.forEach((ratedMovie) => {
-    const ratingId = ratedMovie.movieId;
+  rating.forEach((ratinglist) => {
+    const ratingId = ratinglist.movieId;
     const matchingMovie = getMatchingMovie(ratingId);
 
     if (matchingMovie) {
-      const today = dayjs();
-      const dateString = today.format('dddd, MMMM D');
-
+      
       ratingsHTML += `
           <div class="rated-item js-rated-item-${matchingMovie.id}">
             <div class="poster">
                 <img src="${matchingMovie.image}" alt="${matchingMovie.name} Poster">
             </div>
             <div class="details">
-                <p class="rated-on">Rated on ${dateString}</p>
+                <p class="rated-on">Rated on ${ratinglist.ratedOn}</p>
                 <h2 class="movie-title">${matchingMovie.name}</h2>
                 <p class="year-runtime">(${matchingMovie.releaseDate}) • ${matchingMovie.length}</p>
                 <div class="rating-section">
                     <span>
-                        Rating: <span class="rating-label" data-movie-id="${matchingMovie.id}">${ratedMovie.rating}</span>
+                        Rating: <span class="rating-label" data-movie-id="${matchingMovie.id}">${ratinglist.rating}</span>
+                        <span><i class="fa-solid fa-star"></i></span>
                     </span>
                     <input class='input js-input-${matchingMovie.id}' value="">
                     <span class="save-link js-save-link" data-movie-id="${matchingMovie.id}">Save</span>
@@ -57,6 +56,9 @@ function renderRatingPage() {
 
   addEventListeners();
 }
+
+
+renderRatingPage();
 
 
 function addEventListeners() {
@@ -89,18 +91,17 @@ function addEventListeners() {
       const ratingLabel = document.querySelector(`.rating-label[data-movie-id="${movieId}"]`);
       ratingLabel.innerHTML = newInput;
 
+
       updateRating(movieId, newInput);
     });
   });
 
 
-  document.querySelectorAll('.js-delete-button')
-  .forEach((link)=>{
+ document.querySelectorAll('.js-delete-button').forEach((link)=>{
    link.addEventListener('click',  () =>{
     const {movieId} = link.dataset;
 
    removeFromRating(movieId)
-
    renderRatingPage();
    
    })
@@ -110,7 +111,6 @@ function addEventListeners() {
 }
 
 
-renderRatingPage();
 
 
 

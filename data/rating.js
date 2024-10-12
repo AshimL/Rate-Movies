@@ -1,21 +1,22 @@
+import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 
 export let rating;
 
 loadFromStorage();
 
-function loadFromStorage(){
+function loadFromStorage() {
   rating = JSON.parse(localStorage.getItem('rated')) || [];
 
 }
 
 
 
-
 export function addToRate(movieId) {
-
+  const today = dayjs();
   rating.push({
-    movieId: movieId,
-    rating: 0
+    movieId,
+    rating: 0,
+    ratedOn: today.format('MMM DD, YYYY')
   })
 
   saveToStorage();
@@ -38,23 +39,24 @@ export function updateRating(movieId, newRating) {
   });
 
   if (matchingMovie) {
-    matchingMovie.rating = newRating; 
-    saveToStorage(); 
+    matchingMovie.rating = newRating;
+    matchingMovie.ratedOn = dayjs().format('MMM DD, YYYY');
+    saveToStorage();
   }
 };
 
 
-export function removeFromRating(movieId){
- const newRating = [];
+export function removeFromRating(movieId) {
+  const newRating = [];
 
-  rating.forEach((ratinglist) =>{
-    if(ratinglist.movieId !== movieId){
+  rating.forEach((ratinglist) => {
+    if (ratinglist.movieId !== movieId) {
       newRating.push(ratinglist)
     }
   });
 
   rating = newRating;
-  
+
   saveToStorage();
 }
 

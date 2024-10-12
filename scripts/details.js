@@ -35,7 +35,7 @@ let movieDetailsHTML = `
           </div>
         </div>
         
-        <a href="${matchingMovie.trailer}" target="_blank" class="trailer-link">Watch Trailer</a>
+        <a href="${matchingMovie.trailerLink}" target="_blank" class="trailer-link">Watch Trailer</a>
         
         <div class="buttons">
           <button class="rate-button js-rate-button"  data-movie-id="${matchingMovie.id}">Rate it</button>
@@ -53,25 +53,23 @@ let rateButtonClicked = document.querySelector('.js-rate-button');
 
 rateButtonClicked.addEventListener('click', () =>{
 
-  
-// // if (!rating.some(rated => rated.movieId === ratingId)) {
-// //   addToRate(ratingId);
-// // }
-
   const movieId = rateButtonClicked.dataset.movieId;
+ if (!rating.some(rated => rated.movieId === movieId)) {
+  addToRate(movieId);
+ }
 
-  let exists = false;
+//   let exists = false;
 
-  for (let i = 0; i < rating.length; i++) {
-    if (movieId === rating[i].movieId) {
-      exists = true;
-      break;
-    }
-  }
+//   for (let i = 0; i < rating.length; i++) {
+//     if (movieId === rating[i].movieId) {
+//       exists = true;
+//       break;
+//     }
+//   }
 
-if (!exists) {
-  addToRate(movieId)
-}
+// if (!exists) {
+//   addToRate(movieId)
+// }
 
 
   window.location.assign('ratings.html')

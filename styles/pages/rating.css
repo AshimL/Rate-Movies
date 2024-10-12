@@ -10,7 +10,6 @@
 }
 
 
-
 .ratings-page {
   padding-block: 8rem 2rem;
   padding-inline: 2rem;
@@ -98,6 +97,10 @@
   display: none;
 }
 
+.is-editing .fa-solid{
+  display: none;
+}
+
 .is-editing input{
   display: initial;
 }
@@ -141,8 +144,6 @@
 .movie-crew{
   margin-bottom: 10px;
 }
-
-
 
 
 @media (min-width: 768px) {
