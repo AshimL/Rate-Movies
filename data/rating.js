@@ -60,3 +60,9 @@ export function removeFromRating(movieId) {
   saveToStorage();
 }
 
+
+export function listOfMovies(){
+  return rating.length;
+}
+
+

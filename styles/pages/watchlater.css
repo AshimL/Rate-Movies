@@ -20,6 +20,10 @@
   color: var(--text-dark);
 }
 
+.lists{
+  margin-bottom: 10px;
+}
+
 .sort-dropdown {
   margin-top: 1rem;
 }

@@ -1,10 +1,12 @@
-import { getMatchingMovie } from "../data/movies.js";
-import { removeFromWatchLater, watchlater } from "../data/watchL.js";
+import { getMatchingMovie } from "../../data/movies.js";
+import { watchlater, removeFromWatchLater } from "../../data/watchL.js"; 
+import { renderHeader } from "./watchListHeader.js";
+
+
 
 
 function renderWatchLaterPage(){
 let watchlaterHTML = '';
-
 
 
 watchlater.forEach((watchlaterList) =>{
@@ -63,6 +65,7 @@ function EventListeners(){
      const {movieId} = link.dataset;
       removeFromWatchLater(movieId);
       renderWatchLaterPage();
+      renderHeader();
     })
   })
 }

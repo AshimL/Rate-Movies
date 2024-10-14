@@ -33,3 +33,13 @@ export  function removeFromWatchLater(movieId){
   saveToStorage();
 }
 
+
+export function listOfMovies(){
+  return watchlater.length;
+}
+
+
+
+
+
+

@@ -1,6 +1,7 @@
 import { movielist } from "../data/movies.js"
 
 
+
 let homepageHTML = '';
 
 movielist.forEach((movie) =>{
@@ -30,6 +31,9 @@ detailButtons.forEach(button => {
     window.location.assign('details.html');
   });
 });
+
+
+
 
 
 

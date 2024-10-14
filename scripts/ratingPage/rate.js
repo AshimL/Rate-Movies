@@ -1,7 +1,9 @@
-import { getMatchingMovie, movielist } from "../data/movies.js";
-import { addToRate, rating, removeFromRating, saveToStorage } from "../data/rating.js";
+import { getMatchingMovie, movielist } from "../../data/movies.js";
+import { addToRate, rating, removeFromRating, saveToStorage } from "../../data/rating.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
-import { updateRating } from "../data/rating.js";
+import { updateRating } from "../../data/rating.js";
+import { renderRatingHeader } from "./ratingheader.js";
+
 
 
 function renderRatingPage() {
@@ -102,7 +104,9 @@ function EventListeners() {
     const {movieId} = link.dataset;
 
     removeFromRating(movieId)
+    renderRatingHeader();
     renderRatingPage();
+    
    
    })
   })

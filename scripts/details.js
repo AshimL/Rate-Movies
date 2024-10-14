@@ -40,7 +40,7 @@ let movieDetailsHTML = `
         
         <div class="buttons">
           <button class="rate-button js-rate-button"  data-movie-id="${matchingMovie.id}">Rate it</button>
-          <button class="watch-later-button js-watch-later-button" data-movie-id="${matchingMovie.id}"> Add to Watch Later</button>
+          <button class="watch-later-button js-watch-later-button" data-movie-id="${matchingMovie.id}"> Add to Watch List</button>
         </div>
       </div>
     </div>
