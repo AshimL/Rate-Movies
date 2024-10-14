@@ -27,6 +27,7 @@ class movie {
   writer;
   actor;
   trailerLink;
+  imdb;
 
   constructor(movieDetails){
     this.id = movieDetails.id;
@@ -40,6 +41,7 @@ class movie {
     this.writer = movieDetails.writer;
     this.actor = movieDetails.actor;
     this.trailerLink = movieDetails.trailerLink;
+    this.imdb = movieDetails.imdb;
   }
 
 }
@@ -66,6 +68,7 @@ export const movielist = [
     writer: " Scott Beck",
     actor: "Emily Blunt",
     trailerLink: "https://www.youtube.com/watch?v=WR7cc5t7tv8",
+    imdb: 7.5,
   },
 
   {
@@ -80,6 +83,7 @@ export const movielist = [
     writer: "Frank Herbert",
     actor: "Timothée Chalamet",
     trailerLink: "https://www.youtube.com/watch?v=n9xhJrPXop4",
+    imdb: 8.0,
   },
   {
     id:"f703a4bd-3f62-4e3c-9302-8f1c13ab8d7f",
@@ -93,6 +97,7 @@ export const movielist = [
     writer: "Jonathan Nolan",
     actor: "Matthew McConaughey",
     trailerLink: "https://www.youtube.com/watch?v=zSWdZVtXT7E",
+    imdb: 8.7,
   },
   {
     id:"95a4b8e2-17a6-4b2f-9345-c7b62ea71f5e",
@@ -106,6 +111,7 @@ export const movielist = [
     writer: "Shay Hatten",
     actor: "Keanu Reeves",
     trailerLink: "https://www.youtube.com/watch?v=qEVUtrk8_B4",
+    imdb: 7.7,
   },
   {
     id:"68f49e7b-9d3f-4b83-ae29-4e61a3c2675f",
@@ -119,6 +125,7 @@ export const movielist = [
     writer: "Christopher Nolan",
     actor: "Cillian Murphy",
     trailerLink: "https://www.youtube.com/watch?v=uYPbbksJxIgs",
+    imdb: 8.3,
   },
   {
     id:"b73e3d15-842f-48f4-b2bc-3a9d6e457e0d",
@@ -132,6 +139,7 @@ export const movielist = [
     writer: "David S. Goyer",
     actor: "Christian Bale",
     trailerLink: "https://www.youtube.com/watch?v=EXeTwQWrcwY",
+    imdb: 9.0,
   },
   {
     id:"d4e8a12c-5f71-44eb-92ad-14891f4c5ba2",
@@ -145,6 +153,7 @@ export const movielist = [
     writer: "Francis Ford Coppola",
     actor: "Marlon Brando",
     trailerLink: "https://www.youtube.com/watch?v=UaVTIH8mujA",
+    imdb: 9.2,
   },
   {
     id:"2f9c73a1-b2e3-4a9a-91b4-d7e37d2b4a90",
@@ -158,6 +167,7 @@ export const movielist = [
     writer: "Pete Docter",
     actor: "Tom Hanks",
     trailerLink: "https://www.youtube.com/watch?v=v-PjgYDrg70",
+    imdb: 8.3,
   },
   {
     id:"47ae6d9f-8c15-4b69-8b6b-e6a2b931c19f",
@@ -171,6 +181,7 @@ export const movielist = [
     writer: "Andrew Kevin Walker",
     actor: "Morgan Freeman",
     trailerLink: "https://www.youtube.com/watch?v=znmZoVkCjpI",
+    imdb: 8.6,
   },
   {
     id:"e3d2a648-75b3-41fa-b43e-f3a5c6b8b2e9",
@@ -184,6 +195,7 @@ export const movielist = [
     writer: "Han Jin-won",
     actor: "Song Kang-ho",
     trailerLink: "https://www.youtube.com/watch?v=5xH0HfJHsaY",
+    imdb: 9.5,
   }
 ].map((movieDetails) => {
   return new movie(movieDetails)

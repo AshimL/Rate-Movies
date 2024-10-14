@@ -12,14 +12,15 @@ function loadFromStorage() {
 
 
 export function addToRate(movieId) {
-  const today = dayjs();
-  rating.push({
-    movieId,
-    rating: 0,
-    ratedOn: today.format('MMM DD, YYYY')
-  })
-
-  saveToStorage();
+   if (!rating.some(rated => rated.movieId === movieId)) {
+    const today = dayjs();
+    rating.push({
+      movieId,
+      rating: 0,
+      ratedOn: today.format('MMM DD, YYYY')
+    });
+    saveToStorage();
+  }
 }
 
 
@@ -29,7 +30,6 @@ export function saveToStorage() {
 
 
 export function updateRating(movieId, newRating) {
-
   let matchingMovie;
 
   rating.forEach((ratinglist) => {

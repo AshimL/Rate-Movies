@@ -54,14 +54,14 @@ function renderRatingPage() {
 
   document.querySelector('.js-ratings-content').innerHTML = ratingsHTML;
 
-  addEventListeners();
+  EventListeners();
 }
 
 
 renderRatingPage();
 
 
-function addEventListeners() {
+function EventListeners() {
 
   document.querySelectorAll('.js-rate-button').forEach((link) => {
     link.addEventListener('click', () => {
@@ -101,14 +101,17 @@ function addEventListeners() {
    link.addEventListener('click',  () =>{
     const {movieId} = link.dataset;
 
-   removeFromRating(movieId)
-   renderRatingPage();
+    removeFromRating(movieId)
+    renderRatingPage();
    
    })
   })
 
 
 }
+
+
+
 
 
 

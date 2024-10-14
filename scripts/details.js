@@ -1,6 +1,7 @@
 import { movielist } from "../data/movies.js";
 import { getMatchingMovie } from "../data/movies.js";
 import { addToRate, rating } from "../data/rating.js";
+import { addToWatchLater } from "../data/watchL.js";
 
 
 
@@ -39,7 +40,7 @@ let movieDetailsHTML = `
         
         <div class="buttons">
           <button class="rate-button js-rate-button"  data-movie-id="${matchingMovie.id}">Rate it</button>
-          <button class="watch-later-button"> Add to Watch Later</button>
+          <button class="watch-later-button js-watch-later-button" data-movie-id="${matchingMovie.id}"> Add to Watch Later</button>
         </div>
       </div>
     </div>
@@ -49,30 +50,22 @@ document.querySelector('.js-detail-container')
 .innerHTML = movieDetailsHTML
 
 
-let rateButtonClicked = document.querySelector('.js-rate-button');
+let rateButton = document.querySelector('.js-rate-button');
 
-rateButtonClicked.addEventListener('click', () =>{
-
-  const movieId = rateButtonClicked.dataset.movieId;
- if (!rating.some(rated => rated.movieId === movieId)) {
+rateButton.addEventListener('click', () =>{
+const {movieId} = rateButton.dataset;
   addToRate(movieId);
- }
-
-//   let exists = false;
-
-//   for (let i = 0; i < rating.length; i++) {
-//     if (movieId === rating[i].movieId) {
-//       exists = true;
-//       break;
-//     }
-//   }
-
-// if (!exists) {
-//   addToRate(movieId)
-// }
-
-
   window.location.assign('ratings.html')
+})
+
+
+let watchlaterButton = document.querySelector('.js-watch-later-button')
+
+watchlaterButton.addEventListener('click', () =>{
+  const {movieId} = watchlaterButton.dataset;
+  addToWatchLater(movieId)
+
+  window.location.assign('watchlater.html')
 })
 
 

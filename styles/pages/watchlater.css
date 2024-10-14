@@ -86,6 +86,10 @@
   color:var(--secondary-color)
 }
 
+.delete-button:hover{
+  cursor: pointer;
+}
+
 .overview-title {
   font-weight: 600;
   margin-bottom: 0.5rem;
